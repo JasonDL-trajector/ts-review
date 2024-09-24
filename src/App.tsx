@@ -1,17 +1,24 @@
+import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { person } from './ts/es6';
-import { printStudent } from './ts/spread';
-import {
-  usersArray,
-  findUserByName,
-  getSummary,
-  getUserNames,
-} from './ts/array';
+import { Todo } from './types/models';
+import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
+import { addTodo, removeTodo, checkTodo } from './utils/helpers';
+// import { person } from './ts/es6';
+// import { printStudent } from './ts/spread';
+// import {
+//   usersArray,
+//   findUserByName,
+//   getSummary,
+//   getUserNames,
+// } from './ts/array';
 
 function App() {
-  const { totalUsers, averageAge } = getSummary();
-  const { id, name, age } = findUserByName(usersArray, 'Alice')!;
+  // const { totalUsers, averageAge } = getSummary();
+  // const { id, name, age } = findUserByName(usersArray, 'Alice')!;
+
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   return (
     <>
@@ -21,7 +28,7 @@ function App() {
         </a>
       </div>
       <h1>React + TypeScript</h1>
-      <div className="card">
+      {/* <div className="card">
         <p>{person()}</p>
         <p>{printStudent()}</p>
 
@@ -31,6 +38,16 @@ function App() {
         <p>{`Average age: ${averageAge}`}</p>
 
         <p>Alice's data: {`id: ${id}, name: ${name}, age: ${age}`}</p>
+      </div> */}
+
+      <div>
+        <TodoInput onAddTodo={addTodo} todos={todos} setTodos={setTodos} />
+        <TodoList
+          todos={todos}
+          onRemoveTodo={removeTodo}
+          onCheckTodo={checkTodo}
+          setTodos={setTodos}
+        />
       </div>
     </>
   );

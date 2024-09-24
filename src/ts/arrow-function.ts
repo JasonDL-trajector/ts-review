@@ -8,12 +8,12 @@ interface Person {
   age: number;
 }
 
-//  filters out people who are older than 18
 const people: Person[] = [
   { name: 'Alice', age: 25 },
   { name: 'Bob', age: 17 },
   { name: 'Charlie', age: 30 },
 ];
 
+//  filters out people who are older than 18
 const adults = people.filter((person) => person.age > 18);
 console.log('Adults:', adults);
