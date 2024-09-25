@@ -1,4 +1,4 @@
-import { TodoListProps } from '../types/models';
+import { TodoListProps } from '../lib/types';
 import TodoItem from './TodoItem';
 
 const TodoList = ({
@@ -7,6 +7,7 @@ const TodoList = ({
   onCheckTodo,
   setTodos,
 }: TodoListProps) => {
+  console.log('rendered TodoList');
   return (
     <div>
       <ol

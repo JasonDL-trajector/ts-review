@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TodoItemProps } from '../types/models';
+import { TodoItemProps } from '../lib/types';
 
 const TodoItem = ({
   todo,

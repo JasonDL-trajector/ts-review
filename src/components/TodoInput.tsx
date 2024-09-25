@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TodoInputProps } from '../types/models';
+import { TodoInputProps } from '../lib/types';
 
 const TodoInput = ({ onAddTodo, todos, setTodos }: TodoInputProps) => {
   const [todoTitle, setTodoTitle] = useState('');

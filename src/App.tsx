@@ -1,24 +1,25 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { Todo } from './types/models';
+import { Todo, TodoModify } from './lib/types';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import { addTodo, removeTodo, checkTodo } from './lib/utils';
-// import { person } from './ts/es6';
-// import { printStudent } from './ts/spread';
-// import {
-//   usersArray,
-//   findUserByName,
-//   getSummary,
-//   getUserNames,
-// } from './ts/array';
 
 function App() {
-  // const { totalUsers, averageAge } = getSummary();
-  // const { id, name, age } = findUserByName(usersArray, 'Alice')!;
-
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  const memoizedAddTodo = useCallback((title: string) => {
+    addTodo(title, todos, setTodos);
+  }, []);
+
+  const memoizedRemoveTodo = useCallback(({ id }: TodoModify) => {
+    removeTodo({ id, setTodos });
+  }, []);
+
+  const memoizedCheckTodo = useCallback(({ id }: TodoModify) => {
+    checkTodo({ id, setTodos });
+  }, []);
 
   return (
     <>
@@ -28,24 +29,16 @@ function App() {
         </a>
       </div>
       <h1>React + TypeScript</h1>
-      {/* <div className="card">
-        <p>{person()}</p>
-        <p>{printStudent()}</p>
-
-        <br />
-        <p>{getUserNames()}</p>
-        <p>{`Total users: ${totalUsers}`}</p>
-        <p>{`Average age: ${averageAge}`}</p>
-
-        <p>Alice's data: {`id: ${id}, name: ${name}, age: ${age}`}</p>
-      </div> */}
-
       <div>
-        <TodoInput onAddTodo={addTodo} todos={todos} setTodos={setTodos} />
+        <TodoInput
+          onAddTodo={memoizedAddTodo}
+          todos={todos}
+          setTodos={setTodos}
+        />
         <TodoList
           todos={todos}
-          onRemoveTodo={removeTodo}
-          onCheckTodo={checkTodo}
+          onRemoveTodo={memoizedRemoveTodo}
+          onCheckTodo={memoizedCheckTodo}
           setTodos={setTodos}
         />
       </div>
