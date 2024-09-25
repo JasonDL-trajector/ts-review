@@ -4,7 +4,7 @@ import './App.css';
 import { Todo } from './types/models';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
-import { addTodo, removeTodo, checkTodo } from './utils/helpers';
+import { addTodo, removeTodo, checkTodo } from './lib/utils';
 // import { person } from './ts/es6';
 // import { printStudent } from './ts/spread';
 // import {
