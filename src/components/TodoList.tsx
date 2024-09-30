@@ -9,14 +9,7 @@ const TodoList = ({
 }: TodoListProps) => {
   return (
     <div>
-      <ol
-        style={{
-          listStyleType: 'decimal',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-        }}
-      >
+      <ol className="flex flex-col gap-10 list-decimal">
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}

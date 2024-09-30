@@ -11,23 +11,12 @@ const TodoInput = ({ onAddTodo, todos, setTodos }: TodoInputProps) => {
     }
   };
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        width: 'full',
-        gap: '10px',
-      }}
-    >
+    <div className="flex justify-center w-full gap-10 my-10">
       <input
         type="text"
         value={todoTitle}
         onChange={(e) => setTodoTitle(e.target.value)}
-        style={{
-          border: '1px solid rgba(0, 0, 0, 0.2)',
-          padding: '10px',
-          borderRadius: '1rem',
-        }}
+        className="border border-gray-200 rounded-md p-[10px]"
       />
       <button onClick={handleSubmit}>Add Todo</button>
     </div>

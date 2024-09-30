@@ -11,12 +11,12 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="flex flex-col items-center justify-center">
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>React + TypeScript</h1>
+      <h1 className="text-center text-3xl font-bold">React + TypeScript</h1>
       <div>
         <TodoInput onAddTodo={addTodo} todos={todos} setTodos={setTodos} />
         <TodoList

@@ -16,33 +16,18 @@ const TodoItem = ({
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        position: 'relative',
-        top: '30px',
-        left: '30px',
-      }}
-    >
-      <li
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          minWidth: '75%',
-        }}
-      >
+    <div className="flex relative top-30 left-30">
+      <li className="flex justify-between items-center w-96">
         <p>{todo.id}</p>
         <input
           type="checkbox"
           checked={checked}
           onChange={handleCheckboxChange}
         />
-        <p style={{ textDecoration: checked ? 'line-through' : 'none' }}>
-          {todo.title}
-        </p>
+        <p className={checked ? 'line-through' : ''}>{todo.title}</p>
         <button
           onClick={() => onRemoveTodo({ id: todo.id, setTodos })}
-          style={{ display: 'flex', alignItems: 'right' }}
+          className="flex items-right"
         >
           Remove
         </button>
