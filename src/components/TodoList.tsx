@@ -7,7 +7,6 @@ const TodoList = ({
   onCheckTodo,
   setTodos,
 }: TodoListProps) => {
-  console.log('rendered TodoList');
   return (
     <div>
       <ol
