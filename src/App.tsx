@@ -1,25 +1,13 @@
-import { useCallback, useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
-import { Todo, TodoModify } from './lib/types';
+import { useState } from 'react';
+import { addTodo, removeTodo, checkTodo } from './lib/utils';
+import type { Todo } from './lib/types';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
-import { addTodo, removeTodo, checkTodo } from './lib/utils';
+import reactLogo from './assets/react.svg';
+import './App.css';
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
-
-  const memoizedAddTodo = useCallback((title: string) => {
-    addTodo(title, todos, setTodos);
-  }, []);
-
-  const memoizedRemoveTodo = useCallback(({ id }: TodoModify) => {
-    removeTodo({ id, setTodos });
-  }, []);
-
-  const memoizedCheckTodo = useCallback(({ id }: TodoModify) => {
-    checkTodo({ id, setTodos });
-  }, []);
 
   return (
     <>
@@ -30,15 +18,11 @@ function App() {
       </div>
       <h1>React + TypeScript</h1>
       <div>
-        <TodoInput
-          onAddTodo={memoizedAddTodo}
-          todos={todos}
-          setTodos={setTodos}
-        />
+        <TodoInput onAddTodo={addTodo} todos={todos} setTodos={setTodos} />
         <TodoList
           todos={todos}
-          onRemoveTodo={memoizedRemoveTodo}
-          onCheckTodo={memoizedCheckTodo}
+          onRemoveTodo={removeTodo}
+          onCheckTodo={checkTodo}
           setTodos={setTodos}
         />
       </div>
