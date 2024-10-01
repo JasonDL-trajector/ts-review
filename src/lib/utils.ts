@@ -1,10 +1,6 @@
-import type { Todo, TodoModify } from './types';
+import type { Todo, TodoAddition, TodoModify } from './types';
 
-export const addTodo = (
-  title: string,
-  todos: Todo[],
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
-) => {
+export const addTodo = ({ title, todos, setTodos }: TodoAddition) => {
   const newTodo: Todo = { id: todos.length + 1, title, completed: false };
   setTodos((prevTodos) => [...prevTodos, newTodo]);
 };

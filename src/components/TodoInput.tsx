@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import type { TodoInputProps } from '../lib/types';
+import { useTodoContext } from '../TodoContext';
 
-const TodoInput = ({ onAddTodo, todos, setTodos }: TodoInputProps) => {
+const TodoInput = () => {
   const [todoTitle, setTodoTitle] = useState('');
+  const { addTodo, todos, setTodos } = useTodoContext();
 
   const handleSubmit = () => {
     if (todoTitle.trim()) {
-      onAddTodo(todoTitle, todos, setTodos);
+      addTodo({ title: todoTitle, todos, setTodos });
       setTodoTitle('');
     }
   };

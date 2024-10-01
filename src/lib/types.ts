@@ -15,7 +15,6 @@ export interface TodoInputProps {
 }
 
 export interface TodoListProps {
-  todos: Todo[];
   onRemoveTodo: ({ id, setTodos }: TodoModify) => void;
   onCheckTodo: ({ id, setTodos }: TodoModify) => void;
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
@@ -23,8 +22,11 @@ export interface TodoListProps {
 
 export interface TodoItemProps {
   todo: Todo;
-  onRemoveTodo: ({ id, setTodos }: TodoModify) => void;
-  onCheckTodo: ({ id, setTodos }: TodoModify) => void;
+}
+
+export interface TodoAddition {
+  title: string;
+  todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 

@@ -1,23 +1,14 @@
-import type { TodoListProps } from '../lib/types';
 import TodoItem from './TodoItem';
+import { useTodoContext } from '../TodoContext';
 
-const TodoList = ({
-  todos,
-  onRemoveTodo,
-  onCheckTodo,
-  setTodos,
-}: TodoListProps) => {
+const TodoList = () => {
+  const { todos } = useTodoContext();
+
   return (
     <div>
       <ol className="flex flex-col gap-10 list-decimal">
         {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onRemoveTodo={onRemoveTodo}
-            onCheckTodo={onCheckTodo}
-            setTodos={setTodos}
-          />
+          <TodoItem todo={todo} key={todo.id} />
         ))}
       </ol>
     </div>

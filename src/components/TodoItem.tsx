@@ -1,18 +1,15 @@
 import { useState } from 'react';
 import type { TodoItemProps } from '../lib/types';
+import { useTodoContext } from '../TodoContext';
 
-const TodoItem = ({
-  todo,
-  onRemoveTodo,
-  onCheckTodo,
-  setTodos,
-}: TodoItemProps) => {
+const TodoItem = ({ todo }: TodoItemProps) => {
   const [checked, setChecked] = useState(todo.completed);
+  const { removeTodo, checkTodo, setTodos } = useTodoContext();
 
   const handleCheckboxChange = () => {
     const newCheckedState = !checked;
     setChecked(newCheckedState);
-    onCheckTodo({ id: todo.id, setTodos });
+    checkTodo({ id: todo.id, setTodos });
   };
 
   return (
@@ -26,7 +23,7 @@ const TodoItem = ({
         />
         <p className={checked ? 'line-through' : ''}>{todo.title}</p>
         <button
-          onClick={() => onRemoveTodo({ id: todo.id, setTodos })}
+          onClick={() => removeTodo({ id: todo.id, setTodos })}
           className="flex items-right"
         >
           Remove
